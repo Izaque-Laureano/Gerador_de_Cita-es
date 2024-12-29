@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Citações</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Altura total da tela */
+            text-align: center;
+        }
+        header {
+            background-color: #1E3A8A; /* Azul escuro */
+            padding: 15px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #quote {
+            font-size: 24px;
+            font-style: italic;
+            color: #333;
+            font-family: 'Georgia', serif;
+            margin-top: 20px;
+        }
+        #author {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #555;
+        }
+        #author-photo {
+            margin-top: 15px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+        button {
+            background-color: #1E3A8A; /* Azul escuro */
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #374151; /* Cor de fundo mais escura ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Gerenciador de Citações
+</header>
+
+<div class="container">
+    <div id="quote">
+        "A vida é o que acontece enquanto estamos ocupados fazendo outros planos."
+    </div>
+    <div id="author">
+        - John Lennon
+    </div>
+    <img id="author-photo" src="https://upload.wikimedia.org/wikipedia/commons/8/85/John_Lennon_1969_%28cropped%29.jpg" alt="Foto do Autor">
+    <br>
+    <button onclick="changeQuote()">Mudar Citação</button>
+</div>
+
+<script>
+    const quotes = [
+        {
+            text: '"A vida é o que acontece enquanto estamos ocupados fazendo outros planos."',
+            author: 'John Lennon',
+            photo: 'https://upload.wikimedia.org/wikipedia/commons/8/85/John_Lennon_1969_%28cropped%29.jpg'
+        },
+        {
+            text: '"O único lugar onde o sucesso vem antes do trabalho é no dicionário."',
+            author: 'Albert Einstein',
+            photo: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Albert_Einstein_Head.jpg'
+        },
+        {
+            text: '"A felicidade não é algo pronto. Ela vem de suas próprias ações."',
+            author: 'Dalai Lama',
+            photo: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Dalai_Lama_2007.jpg'
+        }
+    ];
+
+    let currentIndex = 0;
+
+    function changeQuote() {
+        currentIndex = (currentIndex + 1) % quotes.length;
+        const quoteElement = document.getElementById('quote');
+        const authorElement = document.getElementById('author');
+        const authorPhotoElement = document.getElementById('author-photo');
+
+        quoteElement.textContent = quotes[currentIndex].text;
+        authorElement.textContent = `- ${quotes[currentIndex].author}`;
+        authorPhotoElement.src = quotes[currentIndex].photo;
+    }
+</script>
+
+</body>
+</html>
